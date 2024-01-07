@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "df356258-5f14-4d1d-9e5f-8663cc59fb2d"
+      }
+    },
+    "owner": "kasunmiu"
   }
 }
