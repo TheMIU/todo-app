@@ -1,30 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
 
 export default function App() {
-  const [name, setName] = useState('John');
-  const [person, setPerson] = useState({ name: 'John', age: 20 })
+  const [name, setName] = useState('___');
+  const [age, setAge] = useState('___');
 
-  const clickHandler = () => {
-    setName('Tommy');
-    setPerson({ name: 'Tommy', age : 50 });
-  }
   return (
     <View style={styles.container}>
-      <View>
-        <Text style={styles.heading}>{name}</Text>
-        <Text style={styles.heading}>person name is {person.name}, age is {person.age}</Text>
+      <View >
+        <Text> Input name: </Text>
+        <TextInput
+          placeholder='your name'
+          style={styles.inputField}
+          onChangeText={(val) => setName(val)}
+        />
+
+        <Text> Input age: </Text>
+        <TextInput
+          keyboardType='numeric'
+          placeholder='your age'
+          style={styles.inputField}
+          onChangeText={(val) => setAge(val)}
+        />
       </View>
-      <View>
-        <Text style={styles.paragraph}>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-          Praesentium sint facere assumenda natus nam atque. Saepe, quibusdam
-          odio! Modi sed laborum totam nam reiciendis eos quia dolorem quaerat.
-          Quos, deleniti.</Text>
-      </View>
-      <View style={styles.buttonContainer}>
-        <Button title='Change' onPress={clickHandler} />
-      </View>
+
+      <Text style={styles.output}>Name : {name} | age : {age}</Text>
     </View>
   );
 }
@@ -37,22 +37,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  heading: {
-    backgroundColor: 'gray',
-    padding: 20,
+  inputField: {
+    borderWidth: 1,
+    borderColor: '#777',
+    padding: 8,
     margin: 5,
-    textAlign:'center',
-    fontWeight: 'bold',
-    color: 'white'
+    width: 200
   },
 
-  paragraph: {
+  output: {
+    backgroundColor: 'gray',
     padding: 10,
-    textAlign: 'center'
-  },
-
-  buttonContainer: {
-    marginTop: 20
+    width: 200,
+    textAlign: 'center',
+    color:'white'
   }
-
 });
