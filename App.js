@@ -1,37 +1,30 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, ScrollView, FlatList, TouchableOpacity } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
+import Header from './components/header';
 
 export default function App() {
-  const [people, setPeople] = useState([
-    { name: 'John', id: '1' },
-    { name: 'Peter', id: '2' },
-    { name: 'Tommy', id: '3' },
-    { name: 'Ruby', id: '4' },
-    { name: 'Shaun', id: '5' },
-    { name: 'James', id: '6' },
-    { name: 'Harry', id: '7' },
+  const [todo, setTodo] = useState([
+    { text: 'wake up', key: '1' },
+    { text: 'code', key: '2' },
+    { text: 'eat', key: '3' },
+    { text: 'play', key: '4' },
+    { text: 'sleep', key: '5' },
   ]);
-
-  const pressHandler = (id) => {
-    console.log(id);
-    setPeople((prevPeople) => {
-      // return new array without selected id
-      return prevPeople.filter(person => person.id != id);
-    });
-  }
 
   return (
     <View style={styles.container}>
-      <FlatList
-        numColumns={1} // default 1 column
-        keyExtractor={(item) => item.id} // default looks for key
-        data={people}
-        renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => pressHandler(item.id)}>
-            <Text style={styles.item}>{item.name}</Text>
-          </TouchableOpacity>
-        )}
-      />
+      <Header />
+      <View style={styles.content}>
+        <View style={styles.list}>
+          <FlatList
+            data={todo}
+            renderItem={({ item }) => (
+              <Text>{item.text}</Text>
+            )}
+          />
+        </View>
+      </View>
+
     </View>
   );
 }
@@ -40,14 +33,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    paddingTop: 40,
-    paddingHorizontal: 20
   },
-
-  item: {
-    marginTop: 24,
-    padding: 30,
-    backgroundColor: 'orange',
-    fontSize: 24
+  content: {
+    padding: 40,
+  },
+  list: {
+    marginTop: 20
   }
 });
