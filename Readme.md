@@ -1,4 +1,7 @@
 ## Todo app using React Native
+Simple Todo App using React Native 
+<img src='todo-app- preview.png'/>
+
 Tutorial : https://www.youtube.com/playlist?list=PL4cUxeGkcC9ixPU-QkScoRBVxtPPzVjrQ <br>
 
 Expo : https://expo.dev/
