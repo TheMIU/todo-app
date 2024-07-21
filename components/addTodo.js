@@ -6,7 +6,11 @@ export default function addTodo({ submitHandler }) {
 
     const changeHandler = (val) => {
         setText(val);
-    }
+    };
+
+    const addTodoHandler = () => {
+        submitHandler(text, () => setText('')); // Clear text after submission
+    };
 
     return (
         <View>
@@ -20,7 +24,7 @@ export default function addTodo({ submitHandler }) {
             <Button
                 color='orange'
                 title="add todo"
-                onPress={() => { Keyboard.dismiss(), submitHandler(text)}}
+                onPress={() => { Keyboard.dismiss(), addTodoHandler(text) }}
             />
         </View>
     )

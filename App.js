@@ -6,6 +6,7 @@ import AddTodo from './components/addTodo';
 
 export default function App() {
   const [todo, setTodo] = useState([
+    { text: 'examples', key: '0' },
     { text: 'wake up', key: '1' },
     { text: 'code', key: '2' },
     { text: 'eat', key: '3' },
@@ -19,7 +20,7 @@ export default function App() {
     })
   }
 
-  const submitHandler = (text) => {
+  const submitHandler = (text, clearTextCallback) => {
     if (text.length > 3) {
       setTodo(prevTodo => {
         return [
@@ -27,10 +28,12 @@ export default function App() {
           ...prevTodo
         ]
       })
+      // clear text field after add to list
+      clearTextCallback();
     } else {
       Alert.alert(
         'OOPS',
-        'Todos must ne over 3 chars long!',
+        'Your todo is too short! Make it a bit longer, at least 4 characters.',
         [{ text: 'understood', onPress: () => console.log('alert closed') }]
       )
     }
